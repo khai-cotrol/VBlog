@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +45,7 @@ class AuthController extends Controller
         Auth::logout();
         return view('login');
     }
+
     public function edit($id)
     {
         $user = User::find($id);
@@ -62,4 +64,13 @@ class AuthController extends Controller
         $user->save();
         return redirect()->route('post.list');
     }
+    public function myFrofile($id)
+    {
+        $allPost = Post::all()->where('user_id',$id);
+        $users =User::all();
+        $user = User::find($id);
+        return view('customer.profile',compact('allPost','user','users'));
+
+    }
+
 }

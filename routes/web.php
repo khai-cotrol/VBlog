@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function (){
     Route::prefix('user')->group(function (){
         Route::get('edit/{id}', [AuthController::class,'edit'])->name('user.edit');
         Route::post('update/{id}', [AuthController::class,'updateProfile'])->name('user.update');
+        Route::get('myProfile{id}', [AuthController::class, 'myFrofile'])->name('myProfile');
+
     });
 });
 
