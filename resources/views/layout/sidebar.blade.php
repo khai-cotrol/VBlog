@@ -9,11 +9,11 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="{{asset('images/img.jpg')}}" alt="..." class="img-circle profile_img">
+                <img src="{{asset('storage/'.\Illuminate\Support\Facades\Auth::user()->img )}}" style="width: 50px;height: 50px" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>{{\Illuminate\Support\Facades\Auth::user()->name}}</h2>
             </div>
         </div>
         <!-- /menu profile quick info -->
@@ -27,8 +27,8 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="index.html">Dashboard</a></li>
-                            <li><a href="index2.html">Dashboard2</a></li>
+                            <li><a href="{{route('post.creat')}}">Creat Post</a></li>
+                            <li><a href="{{route('post.list')}}">List Post</a></li>
                             <li><a href="index3.html">Dashboard3</a></li>
                         </ul>
                     </li>

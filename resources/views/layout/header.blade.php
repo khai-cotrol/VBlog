@@ -1,4 +1,3 @@
-<a href="{{route('logout')}}">logout</a>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +26,7 @@
     <!-- bootstrap-daterangepicker -->
     <link href="{{asset('vendors/css/daterangepicker.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/main.min.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="{{asset('vendors/css/custom.min.css')}}" rel="stylesheet">

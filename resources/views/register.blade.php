@@ -9,7 +9,7 @@
 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                                <form class="mx-1 mx-md-4" action="{{route('Register')}}" method="post" >
+                                <form class="mx-1 mx-md-4" action="{{route('Register')}}" method="post" enctype="multipart/form-data" >
                                     @csrf
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -49,6 +49,14 @@
                                             <label class="form-label" for="form3Example4c">Password</label>
                                         </div>
                                     </div>
+{{--                                    <ul>--}}
+{{--                                        <li>--}}
+{{--                                            <i class="fa fa-image"></i>--}}
+{{--                                            <label class="fileContainer">--}}
+{{--                                                <input type="file" name="image">--}}
+{{--                                            </label>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
 
 {{--                                    <div class="d-flex flex-row align-items-center mb-4">--}}
 {{--                                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>--}}

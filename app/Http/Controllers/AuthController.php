@@ -16,6 +16,8 @@ class AuthController extends Controller
     }
     public function register(UserRequest $userRequest,User $user)
     {
+//        $path= $userRequest->file('image')->store('images','public');
+//        $user->img = $path;
         $user->name =$userRequest->name;
         $user->phone=$userRequest->phone;
         $user->address=$userRequest->address;
@@ -32,7 +34,7 @@ class AuthController extends Controller
     {
         $data = $request->only('email','password');
         if (Auth::attempt($data)){
-             return view('layout.master');
+             return redirect()->route('post.list');
         }else{
             session()->flash('Login_error', 'Tài khoản hoặc mật khẩu không chính xác');
             return redirect()->route('formLogin');
@@ -42,5 +44,18 @@ class AuthController extends Controller
     {
         Auth::logout();
         return view('login');
+    }
+
+    public function updateProfile(Request $request,User $user)
+    {
+
+        $user->name =$request->name;
+        $user->phone=$request->phone;
+        $user->address=$request->address;
+        $user->email = $request->email;
+        $user->save();
+
+
+
     }
 }

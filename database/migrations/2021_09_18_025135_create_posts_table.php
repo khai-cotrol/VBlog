@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title')->nullable();
             $table->longText('content');
             $table->string('image')->nullable();
-            $table->boolean('is_public');
+            $table->boolean('is_public')->nullable();
             $table->timestamps();
         });
     }
