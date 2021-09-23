@@ -6,18 +6,20 @@
                 @foreach($posts as $post)
                 <div class="friend-info">
                     <figure>
-                        <img src="" alt="">
+                        <img src="{{asset('storage/'.$post->user->img)}}" style="width: 30px; height: 30px" alt="">
                     </figure>
                     <div class="friend-name">
                         <div class="more">
                             <div class="more-post-optns"><i class="ti-more-alt"></i>
+                                    @if(\Illuminate\Support\Facades\Auth::user()->id==$post->user->id)
                                 <ul>
                                     <li><a class="fa fa-pencil-square-o" href="{{route('post.edit',$post->id)}}">Edit Post</a></li>
                                     <li><a class="fa fa-trash-o" href="{{route('post.delete',$post->id)}}" onclick="return confirm('Bạn chắc chắn muốn xóa?')">Delete Post</a></li>
                                 </ul>
+                                    @endif
                             </div>
                         </div>
-                        <ins><a href="time-line.html" title="">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></ins>
+                        <ins><a href="time-line.html" title="">{{$post->user->name}}</a></ins>
 
                     </div>
                     <div class="post-meta">
@@ -62,11 +64,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <ul class="like-dislike">
-                                <li><a class="bg-purple" href="#" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                <li><a class="bg-blue" href="#" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-                                <li><a class="bg-red" href="#" title="dislike Post"><i class="ti-thumb-down"></i></a></li>
-                            </ul>
                         </figure>
                         <div class="we-video-info">
                             <ul>
@@ -90,19 +87,20 @@
                     <div class="coment-area" style="display: block;">
                         <ul class="we-comet">
                             <li>
-                                <div class="comet-avatar">
-                                    <img src="images/resources/nearly3.jpg" alt="">
-                                </div>
-                                <div class="we-comment">
-                                    <h5><a href="time-line.html" title="">Jason borne</a></h5>
-                                    <p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-                                    <div class="inline-itms">
-                                        <span>1 year ago</span>
-                                        <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-                                        <a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-                                    </div>
-                                </div>
-
+{{--                                @foreach($comments as $comment)--}}
+{{--                                <div class="comet-avatar" id="{{$comment->id}}">--}}
+{{--                                    <img src="images/resources/nearly3.jpg" alt="">--}}
+{{--                                </div>--}}
+{{--                                <div class="we-comment">--}}
+{{--                                    <h5><a href="time-line.html" title="">{{$comment->user->name}}</a></h5>--}}
+{{--                                    <p>{{$comment->content}}</p>--}}
+{{--                                    <div class="inline-itms">--}}
+{{--                                        <span>{{$comment->create_at}}</span>--}}
+{{--                                        <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>--}}
+{{--                                        <a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                @endforeach--}}
                             </li>
                             <li class="post-comment">
                                 <div class="comet-avatar">
@@ -120,8 +118,12 @@
                                 </div>
                             </li>
                         </ul>
+
                     </div>
                 </div>
+                    <br>
+                    <br>
+                    <br>
                 @endforeach
             </div>
         </div><!-- album post -->

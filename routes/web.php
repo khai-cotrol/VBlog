@@ -14,15 +14,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/',[AuthController::class,'showFormLogin'])->name('formLogin');
-Route::post('/auth',[AuthController::class,'login'])->name('login');
+Route::get('/', function () {
+    return view('login');
+});
+Route::get('/login',[AuthController::class,'showFormLogin'])->name('formLogin');
+Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::get('/register',[AuthController::class,'showFormRegister'])->name('FormRegister');
-Route::post('/registerUser',[AuthController::class,'register'])->name('Register');
+Route::post('/register',[AuthController::class,'register'])->name('Register');
 Route::get('/',[AuthController::class,'logout'])->name('logout');
 
 
 Route::middleware('auth')->group(function (){
+    Route::get('/',[AuthController::class,'logout'])->name('logout');
     Route::get('/list',[PostController::class,'index'])->name('post.list');
     Route::get('/Post',[PostController::class,'create'])->name('post.creat');
     Route::post('/Post',[PostController::class,'store'])->name('post.store');

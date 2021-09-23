@@ -43,6 +43,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post =Post::find($id);
+        $post->comment()->delete();
         $post->delete();
         return redirect()->route('post.list');
     }

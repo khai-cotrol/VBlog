@@ -9,7 +9,7 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="{{asset('images/img.jpg')}}" alt="..." class="img-circle profile_img">
+                <img src="{{asset('storage/'.\Illuminate\Support\Facades\Auth::user()->img )}}" style="width: 50px;height: 50px" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>

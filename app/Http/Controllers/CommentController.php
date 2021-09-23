@@ -11,8 +11,8 @@ class CommentController extends Controller
     public function index($id)
     {
         $post =Post::findOrFall($id);
-        $comments = Comment::orderBy('id','desc')->where(post_id)->get();
-        return view('post.list',compact('post','comments'));
+        $comment = Comment::orderBy('id','desc')->where(post_id)->get();
+        return view('post.list',compact('post','comment'));
     }
     public function comment(Request $request, Comment $comment)
     {
