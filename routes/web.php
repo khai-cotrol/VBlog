@@ -36,5 +36,10 @@ Route::middleware('auth')->group(function (){
 
     Route::post('/comment',[\App\Http\Controllers\CommentController::class,'comment'])->name('comment');
 
+
+    Route::prefix('user')->group(function (){
+        Route::get('edit/{id}', [AuthController::class,'edit'])->name('user.edit');
+        Route::post('update/{id}', [AuthController::class,'updateProfile'])->name('user.update');
+    });
 });
 
