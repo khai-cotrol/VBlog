@@ -16,8 +16,7 @@ class AuthController extends Controller
     }
     public function register(UserRequest $userRequest,User $user)
     {
-//        $path= $userRequest->file('image')->store('images','public');
-//        $user->img = $path;
+
         $user->name =$userRequest->name;
         $user->phone=$userRequest->phone;
         $user->address=$userRequest->address;
@@ -45,17 +44,22 @@ class AuthController extends Controller
         Auth::logout();
         return view('login');
     }
-
-    public function updateProfile(Request $request,User $user)
+    public function edit($id)
     {
+        $user = User::find($id);
+        return view('customer.update',compact('user'));
+    }
 
+    public function updateProfile(Request $request,$id)
+    {
+        $user = User::find($id);
+        $path= $request->file('image')->store('images','public');
+        $user->img = $path;
         $user->name =$request->name;
         $user->phone=$request->phone;
         $user->address=$request->address;
         $user->email = $request->email;
         $user->save();
-
-
-
+        return redirect()->route('post.list');
     }
 }
