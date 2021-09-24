@@ -19,7 +19,7 @@
                                     @endif
                             </div>
                         </div>
-                        <ins><a href="time-line.html" title="">{{$post->user->name}}</a></ins>
+                        <ins><a href="{{route('user.profile',$post->user->id)}}" title="">{{$post->user->name}}</a></ins>
 
                     </div>
                     <div class="post-meta">
