@@ -29,14 +29,14 @@
                                     <input type="file">
                                 </label>
                             </div>
-                            <img src="{{asset('images/profile-image.jpg')}}" alt="">
+                            <img src="{{asset('images/profile-image.jpg')}}"  alt="">
                         </figure>
                         <div class="profile-section">
                             <div class="row">
                                 <div class="col-lg-2 col-md-3">
                                     <div class="profile-author">
                                         <div class="profile-author-thumb">
-                                            <img alt="author" src="{{asset('storage/'.$user->img)}}">
+                                            <img alt="author" src="{{asset('storage/'.$user->img)}}" style="width: 50px; height: 150px">
                                             <div class="edit-dp">
                                                 <label class="fileContainer">
                                                     <i class="fa fa-camera"></i>
