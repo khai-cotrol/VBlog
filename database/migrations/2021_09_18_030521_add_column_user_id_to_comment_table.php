@@ -14,7 +14,7 @@ class AddColumnUserIdToCommentTable extends Migration
     public function up()
     {
         Schema::table('comment', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->after('content');
+            $table->unsignedBigInteger('user_id')->after('contents');
             $table->unsignedBigInteger('post_id')->after('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('post_id')->references('id')->on('posts');

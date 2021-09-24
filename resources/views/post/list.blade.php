@@ -30,50 +30,22 @@
                         <figure>
                             <div class="img-bunch">
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
                                         <figure>
                                             <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                                <img src="images/resources/album1.jpg" alt="">
+                                                <img src="{{asset('/storege'.$post->image)}} width: 300px height: 300px"  alt="">
                                             </a>
                                         </figure>
-                                        <figure>
-                                            <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                                <img src="images/resources/album2.jpg" alt="">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <figure>
-                                            <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                                <img src="images/resources/album6.jpg" alt="">
-                                            </a>
-                                        </figure>
-                                        <figure>
-                                            <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                                <img src="images/resources/album5.jpg" alt="">
-                                            </a>
-                                        </figure>
-                                        <figure>
-                                            <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                                <img src="images/resources/album4.jpg" alt="">
-                                            </a>
-                                            <div class="more-photos">
-                                                <span>+15</span>
-                                            </div>
-                                        </figure>
-                                    </div>
                                 </div>
                             </div>
                         </figure>
                         <div class="we-video-info">
                             <ul>
-                                <li>
-                                    <div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
-                                </li>
+
                                 <li>
 																<span class="comment" title="Comments">
-																	<i class="fa fa-commenting"></i>
-																	<ins>52</ins>
+                                                                    <a href="{{route('commentByPost',$post->id)}}" title="" class="showmore underline"><i class="fa fa-commenting"></i></a>
+
+
 																</span>
                                 </li>
                             </ul>
@@ -87,20 +59,7 @@
                     <div class="coment-area" style="display: block;">
                         <ul class="we-comet">
                             <li>
-{{--                                @foreach($comments as $comment)--}}
-{{--                                <div class="comet-avatar" id="{{$comment->id}}">--}}
-{{--                                    <img src="images/resources/nearly3.jpg" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="we-comment">--}}
-{{--                                    <h5><a href="time-line.html" title="">{{$comment->user->name}}</a></h5>--}}
-{{--                                    <p>{{$comment->content}}</p>--}}
-{{--                                    <div class="inline-itms">--}}
-{{--                                        <span>{{$comment->create_at}}</span>--}}
-{{--                                        <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>--}}
-{{--                                        <a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                @endforeach--}}
+                                <a href="{{route('commentByPost',$post->id)}}" title="" class="showmore underline"> Comments</a>
                             </li>
                             <li class="post-comment">
                                 <div class="comet-avatar">

@@ -3,7 +3,7 @@
     <div class="central-meta postbox">
         <span class="create-post">Update Post</span>
         <div class="new-postbox">
-            <form method="post" action="{{route('post.update',$post->id)}}">
+            <form method="post" action="{{route('post.update',$post->id)}}" enctype="multipart/form-data">
                 @csrf
                 <div class="newpst-input">
                     <input type="text" style="width: 1125px" name="title" value="{{$post->title}}" placeholder="title">

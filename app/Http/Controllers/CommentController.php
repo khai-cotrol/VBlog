@@ -10,17 +10,17 @@ class CommentController extends Controller
 {
     public function index($id)
     {
-        $post =Post::findOrFall($id);
-        $comment = Comment::orderBy('id','desc')->where(post_id)->get();
-        return view('post.list',compact('post','comment'));
+        $post =Post::find($id);
+        $comments = Comment::orderBy('id','desc')->where('post_id',$id)->get();
+        return view('post.comment',compact('post','comments'));
     }
     public function comment(Request $request, Comment $comment)
     {
-        $comment->content = $request->contents;
+        $comment->contents = $request->contents;
         $comment->post_id = $request->post_id;
         $comment->user_id = $request->user_id;
         $comment->save();
-        return redirect()->route('post.list');
+        return redirect()->back();
 
     }
 }
