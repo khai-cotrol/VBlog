@@ -91,5 +91,11 @@ class AuthController extends Controller
         $user->delete();
         return redirect()->back();
     }
+    public function search(Request $request)
+    {
+        $text = $request->name;
+        $users = User::where('name', 'LIKE' , '%' . $text . '%')->get();
+        return view('admin.user.list', compact('users'));
+    }
 
 }

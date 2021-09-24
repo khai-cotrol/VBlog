@@ -8,6 +8,11 @@
 
         <!-- menu profile quick info -->
         <div class="profile clearfix">
+            <form class="d-flex" action="{{route('user.search')}}" method="get" >
+                @csrf
+                <input class="form-control me-2" type="search" name="name" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
             <div class="profile_pic">
                 <img src="{{asset('storage/'.\Illuminate\Support\Facades\Auth::user()->img )}}" style="width: 50px;height: 50px" alt="..." class="img-circle profile_img">
             </div>

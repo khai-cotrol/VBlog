@@ -3,6 +3,7 @@
         <a id="menu_toggle"><i class="fa fa-bars"></i></a>
     </div>
     <nav class="nav navbar-nav">
+
         <ul class=" navbar-right" style="margin-right: 120px">
             <li class="nav-item dropdown open" >
                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
