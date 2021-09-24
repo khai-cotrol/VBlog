@@ -82,7 +82,14 @@ class AuthController extends Controller
         $users =User::all();
         $user = User::find($id);
         return view('customer.yourProfile',compact('allPost','user','users'));
-
+    }
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->posts()->delete();
+        $user->comment()->delete();
+        $user->delete();
+        return redirect()->back();
     }
 
 }
