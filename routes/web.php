@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function (){
         Route::get('/list',[AuthController::class,'index'])->name('user.list');
         Route::get('{id}/profile', [AuthController::class, 'yourProfile'])->name('user.profile');
         Route::get('{id}/delete',[AuthController::class,'destroy'])->name('user.delete');
+        Route::get('/search',[AuthController::class,'search'])->name('user.search');
 
 
     });
