@@ -70,6 +70,11 @@ class AuthController extends Controller
         $users =User::all();
         $user = User::find($id);
         return view('customer.profile',compact('allPost','user','users'));
+    }
+    public function index()
+    {
+        $users = User::all();
+        return view('admin.user.list',compact('users'));
 
     }
 
