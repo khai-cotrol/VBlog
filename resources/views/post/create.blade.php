@@ -3,7 +3,7 @@
     <div class="central-meta postbox">
         <span class="create-post">Create post</span>
         <div class="new-postbox">
-            <form method="post" action="{{route('post.store')}}">
+            <form method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="newpst-input">
                     <input type="text" style="width: 1125px" name="title" placeholder="title">

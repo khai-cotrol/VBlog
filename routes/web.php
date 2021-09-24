@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function (){
 
 
     Route::post('/comment',[\App\Http\Controllers\CommentController::class,'comment'])->name('comment');
+    Route::get('/status/{id}', [\App\Http\Controllers\CommentController::class, 'index'])->name('commentByPost');
+
 
 
     Route::prefix('user')->group(function (){
@@ -45,8 +47,8 @@ Route::middleware('auth')->group(function (){
         Route::get('{id}/profile', [AuthController::class, 'yourProfile'])->name('user.profile');
         Route::get('{id}/delete',[AuthController::class,'destroy'])->name('user.delete');
         Route::get('/search',[AuthController::class,'search'])->name('user.search');
-
-
+        Route::get('editRole/{id}', [AuthController::class,'editRole'])->name('user.editRole');
+        Route::post('updateRole/{id}', [AuthController::class,'updateRole'])->name('user.updateRole');
     });
 });
 

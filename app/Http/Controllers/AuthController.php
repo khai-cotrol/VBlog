@@ -97,5 +97,18 @@ class AuthController extends Controller
         $users = User::where('name', 'LIKE' , '%' . $text . '%')->get();
         return view('admin.user.list', compact('users'));
     }
+    public function editRole($id)
+    {
+        $user= User::find($id);
+        return view('admin.user.updateRole',compact('user'));
+
+    }
+    public function updateRole(Request $request,$id)
+    {
+        $user = User::find($id);
+        $user->role = $request->role;
+        $user->save();
+        return redirect()->route('user.list');
+    }
 
 }
