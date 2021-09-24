@@ -75,6 +75,13 @@ class AuthController extends Controller
     {
         $users = User::all();
         return view('admin.user.list',compact('users'));
+    }
+    public function yourProfile($id)
+    {
+        $allPost = Post::all()->where('user_id',$id);
+        $users =User::all();
+        $user = User::find($id);
+        return view('customer.yourProfile',compact('allPost','user','users'));
 
     }
 

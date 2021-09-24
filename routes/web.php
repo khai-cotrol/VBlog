@@ -42,6 +42,9 @@ Route::middleware('auth')->group(function (){
         Route::post('update/{id}', [AuthController::class,'updateProfile'])->name('user.update');
         Route::get('myProfile{id}', [AuthController::class, 'myFrofile'])->name('myProfile');
         Route::get('/list',[AuthController::class,'index'])->name('user.list');
+        Route::get('{id}/profile', [AuthController::class, 'yourProfile'])->name('user.profile');
+
+
     });
 });
 
