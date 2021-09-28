@@ -23,19 +23,21 @@ Route::get('/register',[AuthController::class,'showFormRegister'])->name('FormRe
 Route::post('/register',[AuthController::class,'register'])->name('Register');
 Route::get('/',[AuthController::class,'logout'])->name('logout');
 
-
 Route::middleware('auth')->group(function (){
     Route::get('/',[AuthController::class,'logout'])->name('logout');
     Route::get('/list',[PostController::class,'index'])->name('post.list');
     Route::get('/Post',[PostController::class,'create'])->name('post.creat');
     Route::post('/Post',[PostController::class,'store'])->name('post.store');
-    Route::get('/update{id}',[PostController::class,'edit'])->name('post.edit');
-    Route::post('/update{id}',[PostController::class,'update'])->name('post.update');
-    Route::get('/delete{id}',[PostController::class,'destroy'])->name('post.delete');
+    Route::get('/update/{id}',[PostController::class,'edit'])->name('post.edit');
+    Route::post('/update/{id}',[PostController::class,'update'])->name('post.update');
+    Route::get('/delete/{id}',[PostController::class,'destroy'])->name('post.delete');
+    Route::get('/detail/{id}',[PostController::class,'detailPost'])->name('post.detail');
+    Route::get('/search',[PostController::class,'search'])->name('post.search');
 
 
     Route::post('/comment',[\App\Http\Controllers\CommentController::class,'comment'])->name('comment');
     Route::get('/status/{id}', [\App\Http\Controllers\CommentController::class, 'index'])->name('commentByPost');
+    Route::get('/deleteComment/{id}',[\App\Http\Controllers\CommentController::class,'destroy'])->name('deleteComment');
 
 
 

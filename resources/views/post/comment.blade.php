@@ -22,7 +22,7 @@
                                 <div class="row">
                                     <figure>
                                         <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                            <img src="{{asset('/storege'.$post->image)}} width: 300px height: 300px" alt="">
+                                            <img src="{{asset('/storage'.$post->image)}} width: 300px height: 300px" alt="">
                                         </a>
                                     </figure>
                                 </div>
@@ -40,11 +40,10 @@
                                     </div>
                                 <div class="friend-name">
                                     <div class="more">
-                                        @if(\Illuminate\Support\Facades\Auth::user()->id==$post->user->id)
+                                        @if(\Illuminate\Support\Facades\Auth::user()->name==$comment->user->name)
                                         <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                 <ul>
-                                                    <li><a class="fa fa-pencil-square-o" href="{{route('post.edit',$post->id)}}">Edit Comment</a></li>
-                                                    <li><a class="fa fa-trash-o" href="{{route('post.delete',$post->id)}}" onclick="return confirm('Bạn chắc chắn muốn xóa?')">Delete Comment</a></li>
+                                                    <li><a class="fa fa-trash-o" href="{{route('deleteComment',$comment->id)}}" onclick="return confirm('Bạn chắc chắn muốn xóa?')">Delete Comment</a></li>
                                                 </ul>
                                         </div>
                                         @endif

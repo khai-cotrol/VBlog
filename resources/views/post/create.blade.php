@@ -10,14 +10,11 @@
                     <textarea rows="2" style="background-color: lightgrey;width: 1125px" name="contents" placeholder="Share some what you are thinking?"></textarea>
                 </div>
                 <div class="attachments">
-                    <ul>
-                        <li>
-                            <i class="fa fa-image"></i>
-                            <label class="fileContainer">
-                                <input type="file" name="image">
-                            </label>
-                        </li>
-                    </ul>
+                    <div class="form-group">
+                        <label for="inputDescription">Image</label>
+                        <input type="file" value="" name="image" id="image"
+                               class="form-control">
+                    </div>
                     <div class="form-group">
                         <input hidden type="number" id="inputUser_id" name="user_id" class="form-control" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                     </div>
