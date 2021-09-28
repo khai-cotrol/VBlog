@@ -12,7 +12,7 @@ class CommentController extends Controller
     {
         $post =Post::find($id);
         $comments = Comment::orderBy('id','desc')->where('post_id',$id)->get();
-        return view('post.comment',compact('post','comments'));
+        return view('detailPost',compact('post','comments'));
     }
     public function comment(Request $request, Comment $comment)
     {
@@ -21,6 +21,11 @@ class CommentController extends Controller
         $comment->user_id = $request->user_id;
         $comment->save();
         return redirect()->back();
-
+    }
+    public function destroy($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+        return redirect()->back();
     }
 }

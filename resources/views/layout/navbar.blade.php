@@ -11,9 +11,8 @@
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                    <a class="dropdown-item"  href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
+                    <a class="dropdown-item"  href="{{route('post.list')}}">
+                        <span>home</span>
                     </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
                     <a class="dropdown-item"  href="{{route('logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>

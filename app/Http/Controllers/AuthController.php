@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserResquest;
 use App\Http\Requests\UserRequest;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -55,14 +57,20 @@ class AuthController extends Controller
     public function updateProfile(Request $request,$id)
     {
         $user = User::find($id);
-        $path= $request->file('image')->store('images','public');
-        $user->img = $path;
-        $user->name =$request->name;
-        $user->phone=$request->phone;
-        $user->address=$request->address;
-        $user->email = $request->email;
-        $user->save();
-        return redirect()->route('post.list');
+        if (!$request->hasFile('image')){
+            $path = $user->img;
+        }else{
+            $path = $request->file('image')->store('images','public');
+        }
+        $data =[
+            'name'=>$request->name,
+            'address'=>$request->address,
+            'phone'=>$request->phone,
+            'email'=>$request->email,
+            'img'=>$path
+        ];
+        DB::table('users')->where('id',$id)->update($data);
+        return redirect()->route('myProfile',Auth::id());
     }
     public function myFrofile($id)
     {
@@ -86,8 +94,6 @@ class AuthController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $user->posts()->delete();
-        $user->comment()->delete();
         $user->delete();
         return redirect()->back();
     }

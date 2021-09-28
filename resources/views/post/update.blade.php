@@ -7,17 +7,15 @@
                 @csrf
                 <div class="newpst-input">
                     <input type="text" style="width: 1125px" name="title" value="{{$post->title}}" placeholder="title">
-                    <textarea rows="2" name="contents" value="{{$post->content}}" style="background-color: lightgrey;width: 1125px" ></textarea>
+                    <input rows="2" name="contents" value="{{$post->content}}" style="background-color: lightgrey;width: 1125px; height: 100px" >
                 </div>
                 <div class="attachments">
-                    <ul>
-                        <li>
-                            <i class="fa fa-image"></i>
-                            <label class="fileContainer">
-                                <input type="file" name="image">
-                            </label>
-                        </li>
-                    </ul>
+                    <div class="form-group">
+                        <label for="inputDescription">Image</label>
+                        <input type="file" value="" name="image" id="image"
+                               class="form-control">
+                    </div>
+                    <img src="{{asset('storage/'.$post->image)}}"style="width: 100px;height: 100px" alt="">
                     <div class="form-group">
                         <input hidden type="number" id="inputUser_id" name="user_id" class="form-control" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                     </div>

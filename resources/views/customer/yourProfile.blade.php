@@ -1,224 +1,232 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-    <title>My Profile</title>
-    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16">
+    <title>Profile</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="{{asset('css/main.min.cs')}}s">
-    <link rel="stylesheet" href="{{asset('css/style.cs')}}s">
-    <link rel="stylesheet" href="{{asset('css/color.css')}}">
-    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
-
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body{
+            background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+        }
+        .emp-profile{
+            padding: 3%;
+            margin-top: 3%;
+            margin-bottom: 3%;
+            border-radius: 0.5rem;
+            background: #fff;
+        }
+        .profile-img{
+            text-align: center;
+        }
+        .profile-img img{
+            width: 70%;
+            height: 100%;
+        }
+        .profile-img .file {
+            position: relative;
+            overflow: hidden;
+            margin-top: -20%;
+            width: 70%;
+            border: none;
+            border-radius: 0;
+            font-size: 15px;
+            background: #212529b8;
+        }
+        .profile-img .file input {
+            position: absolute;
+            opacity: 0;
+            right: 0;
+            top: 0;
+        }
+        .profile-head h5{
+            color: #333;
+        }
+        .profile-head h6{
+            color: #0062cc;
+        }
+        .profile-edit-btn{
+            border: none;
+            border-radius: 1.5rem;
+            width: 70%;
+            padding: 2%;
+            font-weight: 600;
+            color: #6c757d;
+            cursor: pointer;
+        }
+        .proile-rating{
+            font-size: 12px;
+            color: #818182;
+            margin-top: 5%;
+        }
+        .proile-rating span{
+            color: #495057;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .profile-head .nav-tabs{
+            margin-bottom:5%;
+        }
+        .profile-head .nav-tabs .nav-link{
+            font-weight:600;
+            border: none;
+        }
+        .profile-head .nav-tabs .nav-link.active{
+            border: none;
+            border-bottom:2px solid #0062cc;
+        }
+        .profile-work{
+            padding: 14%;
+            margin-top: -15%;
+        }
+        .profile-work p{
+            font-size: 12px;
+            color: #818182;
+            font-weight: 600;
+            margin-top: 10%;
+        }
+        .profile-work a{
+            text-decoration: none;
+            color: #495057;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .profile-work ul{
+            list-style: none;
+        }
+        .profile-tab label{
+            font-weight: 600;
+        }
+        .profile-tab p{
+            font-weight: 600;
+            color: #0062cc;
+        }
+    </style>
 </head>
 <body>
-<div class="gap2 gray-bg">
-    <div class="container">
+
+
+<div class="container emp-profile">
+    <form method="post">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="row merged20" id="page-contents">
-                    <div class="user-profile">
-                        <figure>
-                            <div class="edit-pp">
-                                <label class="fileContainer">
-                                    <i class="fa fa-camera"></i>
-                                    <input type="file">
-                                </label>
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="{{asset('storage/'.$user->img)}}" style="width: 150px" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        {{$user->name}}
+                    </h5>
+                    <br>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work" style="text-align: center">
+                    <p class="colorlib-active"> <a href="{{route('post.list')}}">Home</a></p>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Name</label>
                             </div>
-                            <img src="{{asset('images/profile-image.jpg')}}"  alt="">
-                        </figure>
-                        <div class="profile-section">
-                            <div class="row">
-                                <div class="col-lg-2 col-md-3">
-                                    <div class="profile-author">
-                                        <div class="profile-author-thumb">
-                                            <img alt="author" src="{{asset('storage/'.$user->img)}}" style="width: 50px; height: 150px">
-                                            <div class="edit-dp">
-                                                <label class="fileContainer">
-                                                    <i class="fa fa-camera"></i>
-                                                    <input type="file">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="author-content">
-                                            <a class="h4 author-name" href="about.html">{{$user->name}}</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-md-6">
+                                <p>{{$user->name}}</p>
                             </div>
                         </div>
-                    </div><!-- user profile banner  -->
-                    <div class="col-lg-4 col-md-4">
-                        <aside class="sidebar">
-                            <div class="central-meta stick-widget">
-                                <span class="create-post">Personal Info</span>
-                                <div class="personal-head">
-
-                                    <span class="f-title"><i class="fa fa-birthday-cake"></i> Birthday:</span>
-                                    <p>
-                                        December 17, 1985
-                                    </p>
-                                    <span class="f-title"><i class="fa fa-phone"></i> Phone Number:</span>
-                                    <p>
-                                        0{{$user->phone}}
-                                    </p>
-
-                                    <span class="f-title"><i class="fa fa-globe"></i> Country:</span>
-                                    <p>
-                                        {{$user->address}}
-                                    </p>
-                                    <span class="f-title"><i class="fa fa-envelope"></i> Email & Website:</span>
-                                    <p>
-                                        {{$user->email}}
-                                    </p>
-                                    <span class="f-title"> <a class="h4 author-name"  href="{{route('post.list')}}">back</a></span>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
                             </div>
-                        </aside>
+                            <div class="col-md-6">
+                                <p>{{$user->email}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>0{{$user->phone}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Address</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{$user->address}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Role</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{$user->role}}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-8 col-md-8">
-                        <div class="central-meta">
-                            <span class="create-post">My Post</span>
-                            <div class="row">
-                                <div class="central-meta item">
-                                    <div class="user-post">
-                                        @foreach($allPost as $posts)
-                                        <div class="friend-info">
-                                            <figure>
-                                                <img src="{{asset('storage/'.$user->img)}}" style="width: 30px; height: 30px" alt="">
-                                            </figure>
-                                            <div class="friend-name">
-                                                <div class="more">
-                                                    <div class="more-post-optns"><i class="ti-more-alt"></i>
-                                                        <ul>
-                                                            <li><a class="fa fa-pencil-square-o" href="{{route('post.edit',$posts->id)}}">Edit Post</a></li>
-                                                            <li><a class="fa fa-trash-o" href="{{route('post.delete',$posts->id)}}" onclick="return confirm('Bạn chắc chắn muốn xóa?')">Delete Post</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <ins><a href="time-line.html" title="">{{$user->name}}</a></ins>
-
-                                            </div>
-                                            <div class="post-meta">
-                                                <span><h4>{{$posts->title}}</h4> </span>
-                                                <p>
-                                                    {{$posts->content}}
-                                                </p>
-                                                <figure>
-                                                    <div class="img-bunch">
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <figure>
-                                                                    <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                                                        <img src="images/resources/album1.jpg" alt="">
-                                                                    </a>
-                                                                </figure>
-                                                                <figure>
-                                                                    <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                                                        <img src="images/resources/album2.jpg" alt="">
-                                                                    </a>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <figure>
-                                                                    <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                                                        <img src="images/resources/album6.jpg" alt="">
-                                                                    </a>
-                                                                </figure>
-                                                                <figure>
-                                                                    <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                                                        <img src="images/resources/album5.jpg" alt="">
-                                                                    </a>
-                                                                </figure>
-                                                                <figure>
-                                                                    <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                                                        <img src="images/resources/album4.jpg" alt="">
-                                                                    </a>
-                                                                    <div class="more-photos">
-                                                                        <span>+15</span>
-                                                                    </div>
-                                                                </figure>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </figure>
-                                                <div class="we-video-info">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
-                                                        </li>
-                                                        <li>
-																<span class="comment" title="Comments">
-																	<i class="fa fa-commenting"></i>
-																	<ins>52</ins>
-																</span>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="users-thumb-list">
-                                                        <a data-toggle="tooltip" title="Anderw" href="#">
-                                                            <img alt="" src="images/resources/userlist-1.jpg">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="coment-area" style="display: block;">
-                                                <ul class="we-comet">
-                                                    <li>
-                                                        {{--                                @foreach($comments as $comment)--}}
-                                                        {{--                                <div class="comet-avatar" id="{{$comment->id}}">--}}
-                                                            {{--                                    <img src="images/resources/nearly3.jpg" alt="">--}}
-                                                            {{--                                </div>--}}
-                                                        {{--                                <div class="we-comment">--}}
-                                                            {{--                                    <h5><a href="time-line.html" title="">{{$comment->user->name}}</a></h5>--}}
-                                                            {{--                                    <p>{{$comment->content}}</p>--}}
-                                                            {{--                                    <div class="inline-itms">--}}
-                                                                {{--                                        <span>{{$comment->create_at}}</span>--}}
-                                                                {{--                                        <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>--}}
-                                                                {{--                                        <a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>--}}
-                                                                {{--                                    </div>--}}
-                                                            {{--                                </div>--}}
-                                                        {{--                                @endforeach--}}
-                                                    </li>
-                                                    <li class="post-comment">
-                                                        <div class="comet-avatar">
-                                                            <img src="images/resources/nearly1.jpg" alt="">
-                                                        </div>
-                                                        <div class="post-comt-box">
-                                                            <form method="post" action="{{route('comment')}}">
-                                                                @csrf
-                                                                <textarea placeholder="Post your comment" name="contents" style="width: 650px"></textarea>
-                                                                <input type="text" hidden name="user_id"
-                                                                       value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
-                                                                <input type="text" hidden name="post_id" value="{{$posts->id}}">
-                                                                <button type="submit" style="background-color:black" >comment</button>
-                                                            </form>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-
-                                            </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        @foreach($allPost as $posts)
+                            <div class="col-md-12">
+                                <div class="blog-entry ftco-animate d-md-flex">
+                                    <figure>
+                                        <a href="{{route('commentByPost',$posts->id)}}" class="img img-2"> <img src="{{asset('storage/'.$posts->image)}}" style="width: 30px; height: 30px" alt=""></a>
+                                    </figure>
+                                    <div class="text text-2 pl-md-4">
+                                        <h3 class="mb-2">
+                                            <a href="{{route('commentByPost',$posts->id)}}">{{$posts->title}}</a>
+                                        </h3>
+                                        <div class="meta-wrap">
+                                            <p class="meta">
+                                                <span><i class="icon-calendar mr-2"></i>{{$posts->created_at}}</span>
+                                                <span><a href="{{route('commentByPost',$posts->id)}}"><i
+                                                            class="icon-folder-o mr-2"></i>Travel</a></span>
+                                            </p>
                                         </div>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        @endforeach
+                                        <p><a href="{{route('commentByPost',$posts->id)}}" class="btn-custom">Read
+                                                More <span class="ion-ios-arrow-forward"></span></a></p>
                                     </div>
-                                </div><!-- album post -->
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
-<script src="{{asset('js/script.js')}}"></script>
 
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
-
 </html>

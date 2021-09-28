@@ -32,7 +32,7 @@
                                 <div class="row">
                                         <figure>
                                             <a href="#" title="" data-toggle="modal" data-target="#img-comt">
-                                                <img src="{{asset('/storege'.$post->image)}} width: 300px height: 300px"  alt="">
+                                                <img src="{{asset('storage/'.$post->image)}}  " style="width:300px; height:300px"   alt="">
                                             </a>
                                         </figure>
                                 </div>

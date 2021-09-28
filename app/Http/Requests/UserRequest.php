@@ -25,22 +25,25 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'phone'=>'required',
-            'address'=>'required',
-            'password'=>'required',
-            'email'=>'required|email'
+            'name' => 'required|unique:users,name',
+            'email' => 'required|unique:users,email|email',
+            'phone' => 'required|unique:users,phone|min:5',
+            'address' => 'required',
+            'password' => 'required|min:6'
         ];
     }
     public function masssage()
     {
         return[
-          'name.required'=>'không được để trống',
-          'phone.required'=>'không được để trống',
-          'address.required'=>'không được để trống',
-          'password.required'=>'không được để trống',
-          'email.required'=>'không được để trống',
-            'email.email'=>'không đúng định dạng'
+            'name.required' => 'Tên người dùng không được để trống',
+            'name.unique' => 'Tên người dùng đã tồn tại',
+            'email.required' => 'Email không được để trống',
+            'email.unique' => 'Email đã tồn tại',
+            'email.email' => 'Email không đúng định dạng',
+            'phone.required' => 'Số điện thoại không được để trống',
+            'address.required' => 'Địa chỉ không được để trống',
+            'password.required' => 'Mật khẩu không được để trống',
+            'password.min' => 'Mật khẩu ít nhất 6 kí tự'
         ];
     }
 }

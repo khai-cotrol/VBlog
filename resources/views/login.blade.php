@@ -60,7 +60,7 @@
                 </div>
                 <div class="flex-sb-m w-full p-t-3 p-b-32">
                     <div class="contact100-form-checkbox">
-                        <a href="{{route('FormRegister')}}">Terms of service</a>
+                        <a href="{{route('FormRegister')}}">Register now</a>
 
                     </div>
 
